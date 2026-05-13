@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>
+        TaskFlow
+    </title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- BACKGROUND -->
+
+    <div class="bg-blur blur1"></div>
+    <div class="bg-blur blur2"></div>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            TaskFlow
+        </div>
+
+        <div class="nav-links">
+
+            <button onclick="showPage('homePage')">
+                Home
+            </button>
+
+            <button onclick="showPage('aboutPage')">
+                About
+            </button>
+
+            <button onclick="showPage('contactPage')">
+                Contact
+            </button>
+
+            <button id="dashboardNavBtn" class="hidden" onclick="showPage('dashboardPage')">
+                Dashboard
+            </button>
+
+            <button id="profileNavBtn" class="hidden" onclick="showPage('profilePage')">
+                Profile
+            </button>
+
+            <button id="logoutBtn" class="hidden">
+                Logout
+            </button>
+
+        </div>
+
+    </nav>
+
+    <!-- HOME PAGE -->
+
+    <section id="homePage">
+
+        <div class="hero">
+
+            <div class="glass-card hero-card">
+
+                <h1>
+                    Manage Tasks Like Never Before
+                </h1>
+
+                <p>
+                    Organize work, boost productivity, manage goals, and track progress with futuristic productivity tools.
+                </p>
+
+                <button onclick="showPage('authPage')">
+                    Get Started
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- AUTH PAGE -->
+
+    <section id="authPage" class="hidden">
+
+        <div class="auth-container">
+
+            <!-- LOGIN -->
+
+            <div class="glass-card auth-card" id="loginContainer">
+
+                <h2>
+                    Welcome Back
+                </h2>
+
+                <p>
+                    Login to continue
+                </p>
+
+                <form id="loginForm">
+
+                    <input type="email" id="loginEmail" placeholder="Email Address" required />
+
+                    <input type="password" id="loginPassword" placeholder="Password" required />
+
+                    <button type="submit">
+                        Login
+                    </button>
+
+                </form>
+
+                <div class="switch-text">
+
+                    Don't have an account?
+
+                    <span onclick="toggleAuth('register')">
+                        Register
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- REGISTER -->
+
+            <div class="glass-card auth-card hidden" id="registerContainer">
+
+                <h2>
+                    Create Account
+                </h2>
+
+                <p>
+                    Join TaskFlow today
+                </p>
+
+                <form id="registerForm">
+
+                    <input type="text" id="registerName" placeholder="Full Name" required />
+
+                    <input type="email" id="registerEmail" placeholder="Email Address" required />
+
+                    <input type="password" id="registerPassword" placeholder="Password" required />
+
+                    <input type="tel" id="registerMobile" placeholder="Mobile Number" required />
+
+                    <input type="date" id="registerDob" required />
+
+                    <input type="number" id="registerAge" placeholder="Age" required />
+
+                    <input type="text" id="registerGender" placeholder="Gender" required />
+
+                    <input type="text" id="registerEducation" placeholder="Education" required />
+
+                    <input type="text" id="registerCollege" placeholder="College Name" required />
+
+                    <input type="text" id="registerLocation" placeholder="Location" required />
+
+                    <input type="text" id="registerOccupation" placeholder="Occupation" required />
+
+                    <input type="text" id="registerSkills" placeholder="Skills" required />
+
+                    <input type="text" id="registerLinkedin" placeholder="LinkedIn Username" />
+
+                    <input type="text" id="registerGithub" placeholder="GitHub Username" />
+
+                    <input type="text" id="registerWebsite" placeholder="Portfolio Website" />
+
+                    <textarea id="registerBio" placeholder="Short Bio"></textarea>
+
+                    <button type="submit">
+                        Register
+                    </button>
+
+                </form>
+
+                <div class="switch-text">
+
+                    Already have an account?
+
+                    <span onclick="toggleAuth('login')">
+                        Login
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- DASHBOARD PAGE -->
+
+    <section id="dashboardPage" class="hidden">
+
+        <!-- STATS -->
+
+        <div class="stats-grid">
+
+            <div class="glass-card stat-card">
+
+                <h3>
+                    Total Tasks
+                </h3>
+
+                <p id="totalTasks">
+                    0
+                </p>
+
+            </div>
+
+            <div class="glass-card stat-card">
+
+                <h3>
+                    Pending
+                </h3>
+
+                <p id="pendingTasks">
+                    0
+                </p>
+
+            </div>
+
+            <div class="glass-card stat-card">
+
+                <h3>
+                    In Progress
+                </h3>
+
+                <p id="progressTasks">
+                    0
+                </p>
+
+            </div>
+
+            <div class="glass-card stat-card">
+
+                <h3>
+                    Completed
+                </h3>
+
+                <p id="completedTasks">
+                    0
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- TASK FORM -->
+
+        <div class="glass-card task-form-card">
+
+            <h2>
+                Create Task
+            </h2>
+
+            <form id="taskForm">
+
+                <div class="form-grid">
+
+                    <input type="text" id="title" placeholder="Task Title" required />
+
+                    <input type="date" id="dueDate" required />
+
+                </div>
+
+                <textarea id="description" placeholder="Task Description"></textarea>
+
+                <div class="form-grid">
+
+                    <select id="status">
+
+                        <option value="Pending">
+                            Pending
+                        </option>
+
+                        <option value="In Progress">
+                            In Progress
+                        </option>
+
+                        <option value="Completed">
+                            Completed
+                        </option>
+
+                    </select>
+
+                    <select id="priority">
+
+                        <option value="Low">
+                            Low Priority
+                        </option>
+
+                        <option value="Medium">
+                            Medium Priority
+                        </option>
+
+                        <option value="High">
+                            High Priority
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <button type="submit">
+                    Save Task
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- FILTER -->
+
+        <div class="glass-card filters">
+
+            <input type="text" id="searchInput" placeholder="Search tasks..." />
+
+            <select id="filterStatus">
+
+                <option value="">
+                    All Status
+                </option>
+
+                <option value="Pending">
+                    Pending
+                </option>
+
+                <option value="In Progress">
+                    In Progress
+                </option>
+
+                <option value="Completed">
+                    Completed
+                </option>
+
+            </select>
+
+        </div>
+
+        <!-- TASK LIST -->
+
+        <div id="taskContainer" class="task-grid"></div>
+
+    </section>
+
+    <!-- PROFILE PAGE -->
+
+    <section id="profilePage" class="hidden">
+
+        <div class="glass-card profile-card">
+
+            <!-- PROFILE HEADER -->
+
+            <div class="profile-header">
+
+                <div class="profile-avatar">
+
+                    <span id="profileInitial">
+                        U
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <h3 id="profileMainName">
+                        User Name
+                    </h3>
+
+                    <p id="profileMainRole">
+                        Occupation
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- PROFILE DETAILS -->
+
+            <div class="profile-grid">
+
+                <div class="profile-item">
+                    <span>Name</span>
+                    <p id="profileName"></p>
+                </div>
+
+                <div class="profile-item">
+                    <span>Email</span>
+                    <p id="profileEmail"></p>
+                </div>
+
+                <div class="profile-item">
+                    <span>Mobile</span>
+                    <p id="profileMobile"></p>
+                </div>
+
+                <div class="profile-item">
+                    <span>Date Of Birth</span>
+                    <p id="profileDob"></p>
+                </div>
+
+                <div class="profile-item">
+                    <span>Age</span>
+                    <p id="profileAge"></p>
+                </div>
+
+                <div class="profile-item">
+                    <span>Gender</span>
+                    <p id="profileGender"></p>
+                </div>
+
+                <div class="profile-item">
+                    <span>Education</span>
+                    <p id="profileEducation"></p>
+                </div>
+
+                <div class="profile-item">
+                    <span>College</span>
+                    <p id="profileCollege"></p>
+                </div>
+
+                <div class="profile-item">
+                    <span>Location</span>
+                    <p id="profileLocation"></p>
+                </div>
+
+                <div class="profile-item">
+                    <span>Occupation</span>
+                    <p id="profileOccupation"></p>
+                </div>
+
+                <div class="profile-item">
+                    <span>Skills</span>
+                    <p id="profileSkills"></p>
+                </div>
+
+                <div class="profile-item">
+                    <span>LinkedIn</span>
+                    <p id="profileLinkedin"></p>
+                </div>
+
+                <div class="profile-item">
+                    <span>GitHub</span>
+                    <p id="profileGithub"></p>
+                </div>
+
+                <div class="profile-item">
+                    <span>Website</span>
+                    <p id="profileWebsite"></p>
+                </div>
+
+                <div class="profile-item">
+                    <span>Bio</span>
+                    <p id="profileBio"></p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ABOUT PAGE -->
+
+    <section id="aboutPage" class="hidden">
+
+        <div class="glass-card page-card">
+
+            <h2>
+                About TaskFlow
+            </h2>
+
+            <p>
+                TaskFlow is a modern productivity and task management platform designed to improve workflow, organization, and efficiency.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- CONTACT PAGE -->
+
+    <section id="contactPage" class="hidden">
+
+        <div class="glass-card page-card">
+
+            <h2>
+                Contact Us
+            </h2>
+
+            <p>
+                Email: support@taskflow.com
+            </p>
+
+            <p>
+                Phone: +91 9876543210
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- SCRIPT -->
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
