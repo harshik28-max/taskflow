@@ -1005,3 +1005,9 @@ if (currentUser) {
         "homePage"
     );
 }
+fetch('https://taskflow-5s1g.onrender.com/api/projects')
+    .then((res) => res.json())
+    .then((data) => {
+        console.log(data);
+    })
+    .catch((err) => console.log(err));
